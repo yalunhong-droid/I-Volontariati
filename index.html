@@ -366,17 +366,210 @@
 </html>
 ```
 
-## Come usarlo
+## Versione avanzata con animazioni e stile professionale
 
-1. Crea un file `index.html`
-2. Incolla tutto il codice
-3. Apri il file nel browser
-4. Personalizza colori, testi e numeri
+### Miglioramenti inclusi
 
-## Tecnologie usate
+* Effetti glow dinamici
+* Background con particelle
+* Animazioni floating
+* Hover effects
+* Responsive professionale
+* Gradient moderni
+* Timeline luminosa
+* Effetto neon
+* Tipografia premium
+* Layout stile agenzia marketing
 
-* HTML5
-* CSS3
-* Flexbox
-* Responsive Design
-* Gradient & Glow Effects
+---
+
+# CSS EXTRA (aggiungilo sotto al CSS esistente)
+
+```css
+
+body{
+  background:
+    radial-gradient(circle at top left, rgba(0,255,200,0.08), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(0,120,255,0.15), transparent 35%),
+    #020817;
+}
+
+.before::after,
+.after::after{
+  content:'';
+  position:absolute;
+  width:500px;
+  height:500px;
+  border-radius:50%;
+  filter:blur(120px);
+  opacity:0.2;
+  z-index:0;
+}
+
+.before::after{
+  background:#0033ff;
+  top:-200px;
+  left:-200px;
+}
+
+.after::after{
+  background:#00ffc8;
+  bottom:-250px;
+  right:-250px;
+}
+
+.vs-circle{
+  animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+  0%{
+    transform:translate(-50%, -50%) scale(1);
+    box-shadow:0 0 0 rgba(0,255,255,0.5);
+  }
+
+  50%{
+    transform:translate(-50%, -50%) scale(1.05);
+    box-shadow:0 0 40px rgba(0,255,255,0.8);
+  }
+
+  100%{
+    transform:translate(-50%, -50%) scale(1);
+    box-shadow:0 0 0 rgba(0,255,255,0.5);
+  }
+}
+
+.number{
+  letter-spacing:-4px;
+  text-shadow:0 0 30px rgba(255,255,255,0.15);
+}
+
+.green{
+  text-shadow:0 0 25px rgba(0,255,180,0.8);
+}
+
+.center-content h1{
+  text-shadow:0 5px 30px rgba(0,0,0,0.4);
+}
+
+.center-content h1 span{
+  text-shadow:0 0 25px rgba(0,255,180,0.7);
+}
+
+.badge{
+  box-shadow:
+    0 10px 25px rgba(255,255,255,0.15),
+    inset 0 0 10px rgba(255,255,255,0.25);
+}
+
+.timeline{
+  text-shadow:0 0 15px rgba(0,255,180,0.8);
+}
+
+.line{
+  background:linear-gradient(
+    to right,
+    transparent,
+    rgba(255,255,255,0.4),
+    transparent
+  );
+}
+
+.logo{
+  text-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+.footer{
+  letter-spacing:1px;
+}
+
+/* FLOATING ANIMATION */
+
+.top-section,
+.bottom-section{
+  animation:float 5s ease-in-out infinite;
+}
+
+.bottom-section{
+  animation-delay:1.5s;
+}
+
+@keyframes float{
+
+  0%{
+    transform:translateY(0px);
+  }
+
+  50%{
+    transform:translateY(-10px);
+  }
+
+  100%{
+    transform:translateY(0px);
+  }
+}
+
+/* PARTICLES */
+
+.particles{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  z-index:1;
+}
+
+.particles span{
+  position:absolute;
+  width:4px;
+  height:4px;
+  background:rgba(255,255,255,0.5);
+  border-radius:50%;
+  animation:particles 10s linear infinite;
+}
+
+@keyframes particles{
+
+  from{
+    transform:translateY(100vh) scale(0);
+    opacity:0;
+  }
+
+  50%{
+    opacity:1;
+  }
+
+  to{
+    transform:translateY(-100vh) scale(1);
+    opacity:0;
+  }
+}
+
+```
+
+---
+
+# HTML PARTICLES (aggiungilo dentro .after)
+
+```html
+<div class="particles">
+  <span style="left:10%; animation-delay:0s;"></span>
+  <span style="left:20%; animation-delay:1s;"></span>
+  <span style="left:35%; animation-delay:3s;"></span>
+  <span style="left:50%; animation-delay:2s;"></span>
+  <span style="left:65%; animation-delay:5s;"></span>
+  <span style="left:80%; animation-delay:4s;"></span>
+  <span style="left:90%; animation-delay:6s;"></span>
+</div>
+```
+
+---
+
+# Effetto premium finale
+
+Questo stile ricrea:
+
+* Landing page stile startup
+* Design social media agency
+* Effetto Instagram/Facebook ads
+* Grafica moderna 2025
+* UI futuristica
