@@ -1,103 +1,382 @@
-<!DOCTYPE html>
+# HTML + CSS per ricreare il design dell'immagine
 
+```html
+<!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<title>Il Volontariato</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prima e Dopo</title>
 
-<style>
-    body {
-        font-family: Arial;
-        background-image: url("download.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        padding: 20px;
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    h1 {
-        color: #333;
+    body{
+      font-family:'Poppins', sans-serif;
+      overflow:hidden;
+      background:#050b1f;
     }
 
-    .domanda {
-        margin-top: 20px;
-        font-weight: bold;
+    .container{
+      width:100%;
+      height:100vh;
+      display:flex;
+      position:relative;
     }
 
-    .risposta {
-        margin-top: 5px;
+    /* LATO SINISTRO */
+    .before{
+      width:50%;
+      background:#020a23;
+      color:#66709b;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      position:relative;
     }
-</style>
 
+    /* LATO DESTRO */
+    .after{
+      width:50%;
+      background:#2f63ff;
+      color:white;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .after::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background-image:radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px);
+      background-size:20px 20px;
+      opacity:0.3;
+    }
+
+    /* LINEA CENTRALE */
+    .divider{
+      position:absolute;
+      left:50%;
+      top:0;
+      transform:translateX(-50%);
+      width:3px;
+      height:100%;
+      background:#59d4ff;
+      z-index:10;
+      box-shadow:0 0 15px rgba(0,255,255,0.6);
+    }
+
+    .vs-circle{
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%, -50%);
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      background:#2452ff;
+      border:5px solid #3f73ff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-size:48px;
+      font-weight:700;
+      z-index:20;
+      box-shadow:0 0 25px rgba(0,0,0,0.4);
+    }
+
+    .badge{
+      padding:8px 30px;
+      border-radius:999px;
+      background:white;
+      font-weight:700;
+      font-size:20px;
+      margin-bottom:120px;
+    }
+
+    .before .badge{
+      color:#8d95b5;
+    }
+
+    .after .badge{
+      color:#2f63ff;
+    }
+
+    .number{
+      font-size:120px;
+      font-weight:800;
+      line-height:1;
+    }
+
+    .before .number{
+      color:#56628e;
+    }
+
+    .after .number{
+      color:white;
+    }
+
+    .label{
+      font-size:32px;
+      font-weight:400;
+      margin-top:10px;
+    }
+
+    .subtext{
+      font-size:20px;
+      opacity:0.7;
+    }
+
+    .top-section,
+    .bottom-section{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+
+    .top-section{
+      position:absolute;
+      top:80px;
+    }
+
+    .bottom-section{
+      position:absolute;
+      bottom:160px;
+    }
+
+    .green{
+      color:#00f7a5;
+    }
+
+    .triangle{
+      width:0;
+      height:0;
+      border-left:22px solid transparent;
+      border-right:22px solid transparent;
+      border-bottom:38px solid #00f7a5;
+      margin-bottom:25px;
+    }
+
+    .timeline{
+      position:absolute;
+      left:50%;
+      top:38%;
+      transform:translateX(20px);
+      color:#00f7a5;
+      font-size:24px;
+      font-weight:600;
+      z-index:15;
+    }
+
+    .timeline::before{
+      content:'';
+      position:absolute;
+      left:-22px;
+      top:12px;
+      width:14px;
+      height:14px;
+      border-radius:50%;
+      background:white;
+      border:5px solid #00f7a5;
+    }
+
+    .center-content{
+      position:absolute;
+      left:50%;
+      bottom:150px;
+      transform:translateX(-50%);
+      text-align:center;
+      color:white;
+      z-index:30;
+      width:700px;
+    }
+
+    .center-content h1{
+      font-size:72px;
+      line-height:1.1;
+      font-weight:800;
+    }
+
+    .center-content h1 span{
+      color:#00f7a5;
+    }
+
+    .center-content p{
+      margin-top:35px;
+      color:#8d95b5;
+      font-size:28px;
+    }
+
+    .line{
+      width:500px;
+      height:1px;
+      background:#44527d;
+      margin:35px auto;
+    }
+
+    .logo{
+      font-size:52px;
+      font-weight:700;
+    }
+
+    .logo span{
+      color:#4f7dff;
+    }
+
+    .footer{
+      margin-top:15px;
+      color:#7d87aa;
+      font-size:20px;
+    }
+
+    @media(max-width:900px){
+
+      .container{
+        flex-direction:column;
+      }
+
+      .before,
+      .after{
+        width:100%;
+        height:50vh;
+      }
+
+      .divider{
+        width:100%;
+        height:3px;
+        left:0;
+        top:50%;
+        transform:none;
+      }
+
+      .vs-circle{
+        top:50%;
+        left:50%;
+      }
+
+      .center-content{
+        width:90%;
+      }
+
+      .center-content h1{
+        font-size:42px;
+      }
+
+      .number{
+        font-size:70px;
+      }
+
+      .label{
+        font-size:22px;
+      }
+    }
+
+  </style>
 </head>
-
 <body>
 
-<h1>Questionario sul Volontariato</h1>
+  <div class="container">
 
-<form>
+    <div class="before">
 
-<div class="domanda">1. Conosci qualche associazione di volontariato?</div>
-<div class="risposta">
-    <input type="radio" name="q1"> Sì
-    <input type="radio" name="q1"> No
-</div>
+      <div class="top-section">
+        <div class="badge">PRIMA</div>
 
-<div class="domanda">2. Conosci qualcuno che lavora nel volontariato?</div>
-<div class="risposta">
-    <input type="radio" name="q2"> Sì
-    <input type="radio" name="q2"> No
-</div>
+        <div class="number">47</div>
+        <div class="label">follower Instagram</div>
+        <div class="subtext">al momento dell'inizio</div>
+      </div>
 
-<div class="domanda">3. Quante associazioni conosci?</div>
-<div class="risposta">
-    <input type="text" placeholder="Scrivi qui">
-</div>
+      <div class="bottom-section">
+        <div class="number">0</div>
+        <div class="label">prenotazioni online</div>
+      </div>
 
-<div class="domanda">4. Hai mai avuto a che fare con un’associazione?</div>
-<div class="risposta">
-    <input type="radio" name="q4"> Sì
-    <input type="radio" name="q4"> No
-</div>
+    </div>
 
-<div class="domanda">5. Pensi sia importante nella società?</div>
-<div class="risposta">
-    <input type="radio" name="q5"> Sì
-    <input type="radio" name="q5"> No
-</div>
+    <div class="after">
 
-<div class="domanda">6. Il volontariato è importante secondo te?</div>
-<div class="risposta">
-    <input type="radio" name="q6"> Sì
-    <input type="radio" name="q6"> No
-</div>
+      <div class="top-section">
+        <div class="badge">DOPO</div>
 
-<div class="domanda">7. Quali volontariati ci sono in Italia?</div>
-<div class="risposta">
-    <input type="text" placeholder="Scrivi qui">
-</div>
+        <div class="number">1.200</div>
+        <div class="label">follower Instagram</div>
+        <div class="subtext">dopo 60 giorni</div>
+      </div>
 
-<div class="domanda">8. I volontari sono presenti nel mondo?</div>
-<div class="risposta">
-    <input type="radio" name="q8"> Sì
-    <input type="radio" name="q8"> No
-</div>
+      <div class="bottom-section">
 
-<div class="domanda">9. Come hai conosciuto il volontariato?</div>
-<div class="risposta">
-    <input type="text" placeholder="Scrivi qui">
-</div>
+        <div class="triangle"></div>
 
-<div class="domanda">10. Conosci altre associazioni?</div>
-<div class="risposta">
-    <input type="radio" name="q10"> Sì
-    <input type="radio" name="q10"> No
-</div>
+        <div class="number green">86</div>
+        <div class="label">prenotazioni online</div>
+        <div class="subtext">generate dal sito web</div>
+      </div>
 
-<br><br>
-<button type="submit">Invia</button>
+    </div>
 
-</form>
+    <div class="divider"></div>
+
+    <div class="timeline">60 giorni</div>
+
+    <div class="vs-circle">VS</div>
+
+    <div class="center-content">
+
+      <h1>
+        Una pizzeria.<br>
+        60 giorni.<br>
+        <span>Risultati reali.</span>
+      </h1>
+
+      <p>
+        Social media + sito web ottimizzato + Google Maps
+      </p>
+
+      <div class="line"></div>
+
+      <div class="logo">
+        Click<span>Rise</span>
+      </div>
+
+      <div class="footer">
+        @clickrise.it • Marketing per attività locali
+      </div>
+
+    </div>
+
+  </div>
 
 </body>
 </html>
+```
+
+## Come usarlo
+
+1. Crea un file `index.html`
+2. Incolla tutto il codice
+3. Apri il file nel browser
+4. Personalizza colori, testi e numeri
+
+## Tecnologie usate
+
+* HTML5
+* CSS3
+* Flexbox
+* Responsive Design
+* Gradient & Glow Effects
