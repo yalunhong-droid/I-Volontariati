@@ -1,620 +1,152 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Prima e Dopo</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
-    body{
-      font-family:'Poppins', sans-serif;
-      overflow:hidden;
-
-      background:
-      radial-gradient(circle at top left, rgba(0,255,200,0.08), transparent 30%),
-      radial-gradient(circle at bottom right, rgba(0,120,255,0.15), transparent 35%),
-      #020817;
-    }
-
-    .container{
-      width:100%;
-      height:100vh;
-      display:flex;
-      position:relative;
-      overflow:hidden;
-    }
-
-    /* LEFT SIDE */
-
-    .before{
-      width:50%;
-      background:#020a23;
-      color:#66709b;
-
-      display:flex;
-      justify-content:center;
-      align-items:center;
-
-      position:relative;
-    }
-
-    /* RIGHT SIDE */
-
-    .after{
-      width:50%;
-      background:#2f63ff;
-      color:white;
-
-      display:flex;
-      justify-content:center;
-      align-items:center;
-
-      position:relative;
-      overflow:hidden;
-    }
-
-    .after::before{
-      content:'';
-
-      position:absolute;
-      inset:0;
-
-      background-image:
-      radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px);
-
-      background-size:20px 20px;
-
-      opacity:0.3;
-    }
-
-    /* GLOW EFFECTS */
-
-    .before::after,
-    .after::after{
-      content:'';
-
-      position:absolute;
-
-      width:500px;
-      height:500px;
-
-      border-radius:50%;
-
-      filter:blur(120px);
-
-      opacity:0.2;
-    }
-
-    .before::after{
-      background:#0033ff;
-      top:-200px;
-      left:-200px;
-    }
-
-    .after::after{
-      background:#00ffc8;
-      bottom:-250px;
-      right:-250px;
-    }
-
-    /* CENTER DIVIDER */
-
-    .divider{
-      position:absolute;
-
-      left:50%;
-      top:0;
-
-      transform:translateX(-50%);
-
-      width:3px;
-      height:100%;
-
-      background:#59d4ff;
-
-      z-index:10;
-
-      box-shadow:0 0 20px rgba(0,255,255,0.7);
-    }
-
-    /* VS BUTTON */
-
-    .vs-circle{
-      position:absolute;
-
-      left:50%;
-      top:50%;
-
-      transform:translate(-50%, -50%);
-
-      width:120px;
-      height:120px;
-
-      border-radius:50%;
-
-      background:#2452ff;
-
-      border:5px solid #4f7dff;
-
-      display:flex;
-      justify-content:center;
-      align-items:center;
-
-      color:white;
-
-      font-size:48px;
-      font-weight:700;
-
-      z-index:20;
-
-      animation:pulse 2s infinite;
-    }
-
-    @keyframes pulse{
-
-      0%{
-        transform:translate(-50%, -50%) scale(1);
-      }
-
-      50%{
-        transform:translate(-50%, -50%) scale(1.05);
-        box-shadow:0 0 40px rgba(0,255,255,0.8);
-      }
-
-      100%{
-        transform:translate(-50%, -50%) scale(1);
-      }
-    }
-
-    /* BADGE */
-
-    .badge{
-      padding:8px 30px;
-
-      background:white;
-
-      border-radius:999px;
-
-      font-size:20px;
-      font-weight:700;
-
-      margin-bottom:100px;
-
-      box-shadow:
-      0 10px 25px rgba(255,255,255,0.15),
-      inset 0 0 10px rgba(255,255,255,0.2);
-    }
-
-    .before .badge{
-      color:#8d95b5;
-    }
-
-    .after .badge{
-      color:#2f63ff;
-    }
-
-    /* NUMBERS */
-
-    .number{
-      font-size:120px;
-      font-weight:800;
-
-      line-height:1;
-
-      letter-spacing:-4px;
-
-      text-shadow:0 0 30px rgba(255,255,255,0.15);
-    }
-
-    .before .number{
-      color:#56628e;
-    }
-
-    .after .number{
-      color:white;
-    }
-
-    .green{
-      color:#00f7a5;
-
-      text-shadow:0 0 25px rgba(0,255,180,0.8);
-    }
-
-    /* TEXT */
-
-    .label{
-      font-size:32px;
-      margin-top:10px;
-    }
-
-    .subtext{
-      font-size:20px;
-      opacity:0.7;
-    }
-
-    /* SECTIONS */
-
-    .top-section,
-    .bottom-section{
-      position:absolute;
-
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-
-      animation:float 5s ease-in-out infinite;
-    }
-
-    .top-section{
-      top:80px;
-    }
-
-    .bottom-section{
-      bottom:140px;
-      animation-delay:1.5s;
-    }
-
-    @keyframes float{
-
-      0%{
-        transform:translateY(0px);
-      }
-
-      50%{
-        transform:translateY(-10px);
-      }
-
-      100%{
-        transform:translateY(0px);
-      }
-    }
-
-    /* TRIANGLE */
-
-    .triangle{
-      width:0;
-      height:0;
-
-      border-left:22px solid transparent;
-      border-right:22px solid transparent;
-      border-bottom:38px solid #00f7a5;
-
-      margin-bottom:25px;
-    }
-
-    /* TIMELINE */
-
-    .timeline{
-      position:absolute;
-
-      left:50%;
-      top:38%;
-
-      transform:translateX(20px);
-
-      color:#00f7a5;
-
-      font-size:24px;
-      font-weight:600;
-
-      z-index:15;
-
-      text-shadow:0 0 15px rgba(0,255,180,0.8);
-    }
-
-    .timeline::before{
-      content:'';
-
-      position:absolute;
-
-      left:-22px;
-      top:12px;
-
-      width:14px;
-      height:14px;
-
-      border-radius:50%;
-
-      background:white;
-
-      border:5px solid #00f7a5;
-    }
-
-    /* CENTER CONTENT */
-
-    .center-content{
-      position:absolute;
-
-      left:50%;
-      bottom:120px;
-
-      transform:translateX(-50%);
-
-      width:700px;
-
-      text-align:center;
-
-      color:white;
-
-      z-index:30;
-    }
-
-    .center-content h1{
-      font-size:72px;
-      line-height:1.1;
-      font-weight:800;
-
-      text-shadow:0 5px 30px rgba(0,0,0,0.4);
-    }
-
-    .center-content h1 span{
-      color:#00f7a5;
-
-      text-shadow:0 0 25px rgba(0,255,180,0.7);
-    }
-
-    .center-content p{
-      margin-top:35px;
-
-      font-size:28px;
-
-      color:#8d95b5;
-    }
-
-    .line{
-      width:500px;
-      height:1px;
-
-      margin:35px auto;
-
-      background:linear-gradient(
-      to right,
-      transparent,
-      rgba(255,255,255,0.4),
-      transparent
-      );
-    }
-
-    .logo{
-      font-size:52px;
-      font-weight:700;
-
-      text-shadow:0 10px 25px rgba(0,0,0,0.4);
-    }
-
-    .logo span{
-      color:#4f7dff;
-    }
-
-    .footer{
-      margin-top:15px;
-
-      color:#7d87aa;
-
-      font-size:20px;
-
-      letter-spacing:1px;
-    }
-
-    /* PIZZA IMAGE */
-
-    .pizza-image{
-      position:absolute;
-
-      right:80px;
-      bottom:80px;
-
-      width:280px;
-      height:280px;
-
-      z-index:5;
-
-      animation:floatPizza 6s ease-in-out infinite;
-    }
-
-    .pizza-image img{
-      width:100%;
-      height:100%;
-
-      object-fit:cover;
-
-      border-radius:30px;
-
-      border:3px solid rgba(255,255,255,0.15);
-
-      transform:rotate(-6deg);
-
-      box-shadow:
-      0 25px 50px rgba(0,0,0,0.45),
-      0 0 40px rgba(0,255,200,0.25);
-
-      transition:0.4s;
-    }
-
-    .pizza-image img:hover{
-      transform:rotate(0deg) scale(1.04);
-    }
-
-    @keyframes floatPizza{
-
-      0%{
-        transform:translateY(0px);
-      }
-
-      50%{
-        transform:translateY(-12px);
-      }
-
-      100%{
-        transform:translateY(0px);
-      }
-    }
-
-    /* PARTICLES */
-
-    .particles{
-      position:absolute;
-      inset:0;
-      overflow:hidden;
-      z-index:1;
-    }
-
-    .particles span{
-      position:absolute;
-
-      width:4px;
-      height:4px;
-
-      background:rgba(255,255,255,0.5);
-
-      border-radius:50%;
-
-      animation:particles 10s linear infinite;
-    }
-
-    @keyframes particles{
-
-      from{
-        transform:translateY(100vh) scale(0);
-        opacity:0;
-      }
-
-      50%{
-        opacity:1;
-      }
-
-      to{
-        transform:translateY(-100vh) scale(1);
-        opacity:0;
-      }
-    }
-
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionario sul Volontariato</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container{
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 700px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1{
+            text-align: center;
+            color: #333;
+        }
+
+        .question{
+            margin-bottom: 20px;
+        }
+
+        label{
+            font-weight: bold;
+        }
+
+        textarea{
+            width: 100%;
+            height: 80px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .options{
+            margin-top: 10px;
+        }
+
+        button{
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: #218838;
+        }
+    </style>
 </head>
-
 <body>
 
 <div class="container">
+    <h1>Questionario sul Volontariato</h1>
 
-  <!-- LEFT -->
-
-  <div class="before">
-
-    <div class="top-section">
-
-      <div class="badge">PRIMA</div>
-
-      <div class="number">47</div>
-
-      <div class="label">follower Instagram</div>
-
-      <div class="subtext">al momento dell'inizio</div>
-
+    <!-- Domanda 1 -->
+    <div class="question">
+        <label>1. Conosci qualche associazione di volontariato?</label>
+        <div class="options">
+            <input type="radio" name="q1"> Sì
+            <input type="radio" name="q1"> No
+        </div>
     </div>
 
-    <div class="bottom-section">
-
-      <div class="number">0</div>
-
-      <div class="label">prenotazioni online</div>
-
+    <!-- Domanda 2 -->
+    <div class="question">
+        <label>2. Conosci qualcuno che lavora nel mondo del volontariato?</label>
+        <div class="options">
+            <input type="radio" name="q2"> Sì
+            <input type="radio" name="q2"> No
+        </div>
     </div>
 
-  </div>
-
-  <!-- RIGHT -->
-
-  <div class="after">
-
-    <!-- PARTICLES -->
-
-    <div class="particles">
-      <span style="left:10%; animation-delay:0s;"></span>
-      <span style="left:20%; animation-delay:1s;"></span>
-      <span style="left:35%; animation-delay:3s;"></span>
-      <span style="left:50%; animation-delay:2s;"></span>
-      <span style="left:65%; animation-delay:5s;"></span>
-      <span style="left:80%; animation-delay:4s;"></span>
-      <span style="left:90%; animation-delay:6s;"></span>
+    <!-- Domanda 3 - Aperta -->
+    <div class="question">
+        <label>3. Quante associazioni conosci?</label>
+        <textarea placeholder="Scrivi la tua risposta..."></textarea>
     </div>
 
-    <div class="top-section">
-
-      <div class="badge">DOPO</div>
-
-      <div class="number">1.200</div>
-
-      <div class="label">follower Instagram</div>
-
-      <div class="subtext">dopo 60 giorni</div>
-
+    <!-- Domanda 4 -->
+    <div class="question">
+        <label>4. Hai mai avuto a che fare con una associazione di volontariato?</label>
+        <div class="options">
+            <input type="radio" name="q4"> Sì
+            <input type="radio" name="q4"> No
+        </div>
     </div>
 
-    <div class="bottom-section">
-
-      <div class="triangle"></div>
-
-      <div class="number green">86</div>
-
-      <div class="label">prenotazioni online</div>
-
-      <div class="subtext">generate dal sito web</div>
-
+    <!-- Domanda 5 -->
+    <div class="question">
+        <label>5. Pensi sia importante la loro funzione nella società?</label>
+        <div class="options">
+            <input type="radio" name="q5"> Sì
+            <input type="radio" name="q5"> No
+        </div>
     </div>
 
-  </div>
-
-  <!-- CENTER -->
-
-  <div class="divider"></div>
-
-  <div class="timeline">60 giorni</div>
-
-  <div class="vs-circle">VS</div>
-
-  <!-- TEXT -->
-
-  <div class="center-content">
-
-    <h1>
-      Una pizzeria.<br>
-      60 giorni.<br>
-      <span>Risultati reali.</span>
-    </h1>
-
-    <p>
-      Social media + sito web ottimizzato + Google Maps
-    </p>
-
-    <div class="line"></div>
-
-    <div class="logo">
-      Click<span>Rise</span>
+    <!-- Domanda 6 - Aperta -->
+    <div class="question">
+        <label>6. Di cosa si occupa secondo te il volontariato?</label>
+        <textarea placeholder="Scrivi la tua risposta..."></textarea>
     </div>
 
-    <div class="footer">
-      @clickrise.it • Marketing per attività locali
+    <!-- Domanda 7 - Aperta -->
+    <div class="question">
+        <label>7. Quanti volontariati ci sono in Italia secondo te?</label>
+        <textarea placeholder="Scrivi la tua risposta..."></textarea>
     </div>
 
-  </div>
+    <!-- Domanda 8 -->
+    <div class="question">
+        <label>8. I volontari sono presenti anche in altre parti del mondo?</label>
+        <div class="options">
+            <input type="radio" name="q8"> Sì
+            <input type="radio" name="q8"> No
+        </div>
+    </div>
 
-  <!-- PIZZA IMAGE -->
+    <!-- Domanda 9 -->
+    <div class="question">
+        <label>9. Come sei venuto a conoscenza del volontariato?</label>
+        <div class="options">
+            <input type="radio" name="q9"> Sì
+            <input type="radio" name="q9"> No
+        </div>
+    </div>
 
-  <div class="pizza-image">
-    <img src="pizza_italiana.jpg.webp" alt="Pizza">
-  </div>
+    <!-- Domanda 10 -->
+    <div class="question">
+        <label>10. Conosci qualche associazione di volontariato?</label>
+        <div class="options">
+            <input type="radio" name="q10"> Sì
+            <input type="radio" name="q10"> No
+        </div>
+    </div>
+
+    <button type="submit">Invia</button>
 
 </div>
 
